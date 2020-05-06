@@ -1,21 +1,21 @@
-import React from 'react';
+import React from "react";
 import axios from "axios";
-import Card from "./components/UserCard.jsx";
-import styled from 'styled-components'
+import Card from "./components/Card.jsx";
+import styled from "styled-components";
 
 export const Flex = styled.div`
-display: flex;
-justify-content: center;
-align-items: center
-`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       user: [],
-      followers: []
-    }
+      followers: [],
+    };
   }
 
   componentDidMount() {
@@ -31,7 +31,7 @@ class App extends React.Component {
 
       axios.get('https://api.github.com/users/witlessmean/followers')
       .then(response => {
-        
+
         this.setState({
           followers: response.data
         })
@@ -43,11 +43,9 @@ class App extends React.Component {
   render() {
     return (
       <Flex>
-        <Card 
-        user={this.state.user}
-        followers={this.state.followers}/>
+        <Card user={this.state.user} followers={this.state.followers} />
       </Flex>
-    )
+    );
   }
 }
 
